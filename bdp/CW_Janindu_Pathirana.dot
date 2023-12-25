@@ -1,0 +1,11 @@
+digraph {
+Game [ label=" Game " shape= box ]
+GameStatusMechine [ label=" GameStatusMechine " shape= box ]
+Spaceship [ label=" Spaceship " shape= box ]
+SpaceshipMap [ label=" SpaceshipMap " shape= box ]
+
+"Game" -> "SpaceshipMap" [style= dotted ]
+"Game" -> "GameStatusMechine" [style= dotted ]
+"Spaceship" -> "GameStatusMechine" [style= dotted ]
+"Spaceship" -> "SpaceshipMap" [style= dotted ]
+}

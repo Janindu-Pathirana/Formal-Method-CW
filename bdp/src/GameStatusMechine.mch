@@ -1,0 +1,12 @@
+﻿/* GameStatusMechine
+ * Author: 
+ * Creation date: 2023-11-20
+ */
+MACHINE
+    GameStatusMechine
+
+SETS
+    GAME_STATUS = { WON , LOST , NOT_OVER } ;
+     REPORT = { SUCCESSFUL , BASE_REACH , BOUNDARY_ERROR , ASTEROID_COLLISION , INSUFFICIENT_POWER , ERROR }
+
+END

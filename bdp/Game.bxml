@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Machine xmlns='https://www.atelierb.eu/Formats/bxml' version='1.0' name='Game' type='abstraction' position='true' semantic='true' b0check='false'>
+<Includes>
+<Attr>
+<Pos l='8' c='1' s='8'/>
+</Attr>
+<Referenced_Machine>
+<Attr>
+<Pos l='8' c='10' s='9'/>
+</Attr>
+<Name>Spaceship</Name>
+</Referenced_Machine>
+</Includes>
+<Sees>
+<Attr>
+<Pos l='18' c='1' s='4'/>
+</Attr>
+<Referenced_Machine>
+<Attr>
+<Pos l='19' c='5' s='12'/>
+</Attr>
+<Name>SpaceshipMap</Name>
+</Referenced_Machine>
+<Referenced_Machine>
+<Attr>
+<Pos l='19' c='19' s='17'/>
+</Attr>
+<Name>GameStatusMechine</Name>
+</Referenced_Machine>
+</Sees>
+<Promotes>
+<Attr>
+<Pos l='10' c='1' s='8'/>
+</Attr>
+<Promoted_Operation>
+<Attr>
+<Pos l='11' c='5' s='6'/>
+</Attr>MoveUp</Promoted_Operation>
+<Promoted_Operation>
+<Attr>
+<Pos l='12' c='5' s='8'/>
+</Attr>MoveDown</Promoted_Operation>
+<Promoted_Operation>
+<Attr>
+<Pos l='13' c='5' s='8'/>
+</Attr>MoveLeft</Promoted_Operation>
+<Promoted_Operation>
+<Attr>
+<Pos l='14' c='5' s='9'/>
+</Attr>MoveRight</Promoted_Operation>
+<Promoted_Operation>
+<Attr>
+<Pos l='15' c='5' s='13'/>
+</Attr>ResetLocation</Promoted_Operation>
+<Promoted_Operation>
+<Attr>
+<Pos l='16' c='5' s='13'/>
+</Attr>Mission_Routs</Promoted_Operation>
+</Promotes>
+<Sets>
+<Attr>
+<Pos l='21' c='1' s='4'/>
+</Attr>
+<Set>
+<Id value='DRECTIONS' typref='4'>
+<Attr>
+<Pos l='22' c='5' s='9'/>
+</Attr>
+</Id>
+<Enumerated_Values>
+<Id value='UP' typref='5'>
+<Attr>
+<Pos l='22' c='18' s='2'/>
+</Attr>
+</Id>
+<Id value='DOWN' typref='5'>
+<Attr>
+<Pos l='22' c='21' s='4'/>
+</Attr>
+</Id>
+<Id value='LEFT' typref='5'>
+<Attr>
+<Pos l='22' c='26' s='4'/>
+</Attr>
+</Id>
+<Id value='RIGHT' typref='5'>
+<Attr>
+<Pos l='22' c='31' s='5'/>
+</Attr>
+</Id>
+</Enumerated_Values>
+</Set>
+</Sets>
+<Abstract_Variables>
+<Attr>
+<Pos l='24' c='1' s='18'/>
+</Attr>
+<Id value='game_status' typref='6'>
+<Attr>
+<Pos l='25' c='5' s='11'/>
+</Attr>
+</Id>
+</Abstract_Variables>
+<Invariant>
+<Attr>
+<Pos l='27' c='1' s='9'/>
+</Attr>
+<Exp_Comparison op=':'>
+<Attr>
+<Pos l='28' c='17' s='1'/>
+</Attr>
+<Id value='game_status' typref='6'>
+<Attr>
+<Pos l='28' c='5' s='11'/>
+</Attr>
+</Id>
+<Id value='GAME_STATUS' typref='7'>
+<Attr>
+<Pos l='28' c='19' s='11'/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Invariant>
+<Initialisation>
+<Attr>
+<Pos l='30' c='1' s='14'/>
+</Attr>
+<Assignement_Sub>
+<Attr>
+<Pos l='31' c='17' s='2'/>
+</Attr>
+<Variables>
+<Id value='game_status' typref='6'>
+<Attr>
+<Pos l='31' c='5' s='11'/>
+</Attr>
+</Id>
+</Variables>
+<Values>
+<Id value='NOT_OVER' typref='6'>
+<Attr>
+<Pos l='31' c='20' s='8'/>
+</Attr>
+</Id>
+</Values>
+</Assignement_Sub>
+</Initialisation>
+<Operations>
+<Operation name='StartGame'>
+<Attr>
+<Pos l='35' c='5' s='6' endLine='41'/>
+</Attr>
+<Output_Parameters>
+<Id value='result' typref='8'>
+<Attr>
+<Pos l='35' c='5' s='6'/>
+</Attr>
+</Id>
+</Output_Parameters>
+<Input_Parameters>
+<Id value='power' typref='1'>
+<Attr>
+<Pos l='35' c='26' s='5'/>
+</Attr>
+</Id>
+</Input_Parameters>
+<Precondition>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Attr>
+<Pos l='37' c='15' s='1'/>
+</Attr>
+<Id value='result' typref='8'>
+<Attr>
+<Pos l='37' c='9' s='6'/>
+</Attr>
+</Id>
+<Id value='REPORT' typref='9'>
+<Attr>
+<Pos l='37' c='17' s='6'/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Attr>
+<Pos l='38' c='15' s='1'/>
+</Attr>
+<Id value='power' typref='1'>
+<Attr>
+<Pos l='38' c='9' s='5'/>
+</Attr>
+</Id>
+<Id value='NAT' typref='2'>
+<Attr>
+<Pos l='38' c='17' s='3'/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op='&lt;=i'>
+<Attr>
+<Pos l='38' c='29' s='2'/>
+</Attr>
+<Id value='power' typref='1'>
+<Attr>
+<Pos l='38' c='23' s='5'/>
+</Attr>
+</Id>
+<Id value='max_power' typref='1'>
+<Attr>
+<Pos l='38' c='32' s='9'/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Nary_Pred>
+</Precondition>
+<Body>
+<Operation_Call>
+<Attr>
+<Pos l='40' c='16' s='3'/>
+</Attr>
+<Name>
+<Id value='ResetLocation'>
+<Attr>
+<Pos l='40' c='20' s='13'/>
+</Attr>
+</Id>
+</Name>
+<Input_Parameters>
+<Id value='power' typref='1'>
+<Attr>
+<Pos l='40' c='34' s='5'/>
+</Attr>
+</Id>
+</Input_Parameters>
+<Output_Parameters>
+<Id value='result' typref='8'>
+<Attr>
+<Pos l='40' c='9' s='6'/>
+</Attr>
+</Id>
+</Output_Parameters>
+</Operation_Call>
+</Body>
+</Operation>
+<Operation name='MoveSpaceship'>
+<Attr>
+<Pos l='54' c='5' s='6' endLine='77'/>
+</Attr>
+<Output_Parameters>
+<Id value='result' typref='8'>
+<Attr>
+<Pos l='54' c='5' s='6'/>
+</Attr>
+</Id>
+</Output_Parameters>
+<Input_Parameters>
+<Id value='direction' typref='5'>
+<Attr>
+<Pos l='54' c='30' s='9'/>
+</Attr>
+</Id>
+</Input_Parameters>
+<Precondition>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Attr>
+<Pos l='56' c='16' s='1'/>
+</Attr>
+<Id value='result' typref='8'>
+<Attr>
+<Pos l='56' c='9' s='6'/>
+</Attr>
+</Id>
+<Id value='REPORT' typref='9'>
+<Attr>
+<Pos l='56' c='18' s='6'/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Attr>
+<Pos l='57' c='19' s='1'/>
+</Attr>
+<Id value='direction' typref='5'>
+<Attr>
+<Pos l='57' c='9' s='9'/>
+</Attr>
+</Id>
+<Id value='DRECTIONS' typref='4'>
+<Attr>
+<Pos l='57' c='21' s='9'/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Nary_Pred>
+</Precondition>
+<Body>
+<Case_Sub>
+<Attr>
+<Pos l='59' c='9' s='4'/>
+</Attr>
+<Value>
+<Id value='direction' typref='5'>
+<Attr>
+<Pos l='59' c='14' s='9'/>
+</Attr>
+</Id>
+</Value>
+<Choices>
+<Choice>
+<Attr>
+<Pos l='60' c='11' s='6'/>
+</Attr>
+<Value>
+<Id value='UP' typref='5'>
+<Attr>
+<Pos l='61' c='13' s='2'/>
+</Attr>
+</Id>
+</Value>
+<Then>
+<Operation_Call>
+<Attr>
+<Pos l='62' c='21' s='3'/>
+</Attr>
+<Name>
+<Id value='MoveUp'>
+<Attr>
+<Pos l='62' c='26' s='6'/>
+</Attr>
+</Id>
+</Name>
+<Output_Parameters>
+<Id value='result' typref='8'>
+<Attr>
+<Pos l='62' c='14' s='6'/>
+</Attr>
+</Id>
+</Output_Parameters>
+</Operation_Call>
+</Then>
+</Choice>
+<Choice>
+<Attr>
+<Pos l='63' c='11' s='2'/>
+</Attr>
+<Value>
+<Id value='DOWN' typref='5'>
+<Attr>
+<Pos l='64' c='13' s='4'/>
+</Attr>
+</Id>
+</Value>
+<Then>
+<Operation_Call>
+<Attr>
+<Pos l='65' c='23' s='3'/>
+</Attr>
+<Name>
+<Id value='MoveDown'>
+<Attr>
+<Pos l='65' c='27' s='8'/>
+</Attr>
+</Id>
+</Name>
+<Output_Parameters>
+<Id value='result' typref='8'>
+<Attr>
+<Pos l='65' c='16' s='6'/>
+</Attr>
+</Id>
+</Output_Parameters>
+</Operation_Call>
+</Then>
+</Choice>
+<Choice>
+<Attr>
+<Pos l='66' c='11' s='2'/>
+</Attr>
+<Value>
+<Id value='LEFT' typref='5'>
+<Attr>
+<Pos l='67' c='13' s='4'/>
+</Attr>
+</Id>
+</Value>
+<Then>
+<Operation_Call>
+<Attr>
+<Pos l='68' c='23' s='3'/>
+</Attr>
+<Name>
+<Id value='MoveLeft'>
+<Attr>
+<Pos l='68' c='27' s='8'/>
+</Attr>
+</Id>
+</Name>
+<Output_Parameters>
+<Id value='result' typref='8'>
+<Attr>
+<Pos l='68' c='16' s='6'/>
+</Attr>
+</Id>
+</Output_Parameters>
+</Operation_Call>
+</Then>
+</Choice>
+<Choice>
+<Attr>
+<Pos l='69' c='11' s='2'/>
+</Attr>
+<Value>
+<Id value='RIGHT' typref='5'>
+<Attr>
+<Pos l='70' c='13' s='5'/>
+</Attr>
+</Id>
+</Value>
+<Then>
+<Operation_Call>
+<Attr>
+<Pos l='71' c='22' s='3'/>
+</Attr>
+<Name>
+<Id value='MoveRight'>
+<Attr>
+<Pos l='71' c='26' s='9'/>
+</Attr>
+</Id>
+</Name>
+<Output_Parameters>
+<Id value='result' typref='8'>
+<Attr>
+<Pos l='71' c='15' s='6'/>
+</Attr>
+</Id>
+</Output_Parameters>
+</Operation_Call>
+</Then>
+</Choice>
+</Choices>
+<Else>
+<Assignement_Sub>
+<Attr>
+<Pos l='73' c='23' s='2'/>
+</Attr>
+<Variables>
+<Id value='result' typref='8'>
+<Attr>
+<Pos l='73' c='16' s='6'/>
+</Attr>
+</Id>
+</Variables>
+<Values>
+<Id value='ERROR' typref='8'>
+<Attr>
+<Pos l='73' c='26' s='5'/>
+</Attr>
+</Id>
+</Values>
+</Assignement_Sub>
+</Else>
+</Case_Sub>
+</Body>
+</Operation>
+<Operation name='WarpSpaceship'>
+<Attr>
+<Pos l='79' c='1' s='6' endLine='85'/>
+</Attr>
+<Output_Parameters>
+<Id value='result' typref='8'>
+<Attr>
+<Pos l='79' c='1' s='6'/>
+</Attr>
+</Id>
+</Output_Parameters>
+<Input_Parameters>
+<Id value='new_position' typref='10'>
+<Attr>
+<Pos l='79' c='26' s='12'/>
+</Attr>
+</Id>
+</Input_Parameters>
+<Precondition>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Attr>
+<Pos l='81' c='16' s='1'/>
+</Attr>
+<Id value='result' typref='8'>
+<Attr>
+<Pos l='81' c='9' s='6'/>
+</Attr>
+</Id>
+<Id value='REPORT' typref='9'>
+<Attr>
+<Pos l='81' c='18' s='6'/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Attr>
+<Pos l='82' c='22' s='1'/>
+</Attr>
+<Id value='new_position' typref='10'>
+<Attr>
+<Pos l='82' c='9' s='12'/>
+</Attr>
+</Id>
+<Id value='space_squares' typref='11'>
+<Attr>
+<Pos l='82' c='24' s='13'/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Nary_Pred>
+</Precondition>
+<Body>
+<Operation_Call>
+<Attr>
+<Pos l='84' c='16' s='3'/>
+</Attr>
+<Name>
+<Id value='WarpDrive'>
+<Attr>
+<Pos l='84' c='20' s='9'/>
+</Attr>
+</Id>
+</Name>
+<Input_Parameters>
+<Id value='new_position' typref='10'>
+<Attr>
+<Pos l='84' c='30' s='12'/>
+</Attr>
+</Id>
+</Input_Parameters>
+<Output_Parameters>
+<Id value='result' typref='8'>
+<Attr>
+<Pos l='84' c='9' s='6'/>
+</Attr>
+</Id>
+</Output_Parameters>
+</Operation_Call>
+</Body>
+</Operation>
+<Operation name='CheckGameStatus'>
+<Attr>
+<Pos l='87' c='1' s='6' endLine='90'/>
+</Attr>
+<Output_Parameters>
+<Id value='status' typref='12'>
+<Attr>
+<Pos l='87' c='1' s='6'/>
+</Attr>
+</Id>
+</Output_Parameters>
+<Body>
+<Operation_Call>
+<Attr>
+<Pos l='89' c='16' s='3'/>
+</Attr>
+<Name>
+<Id value='MissionStatus'>
+<Attr>
+<Pos l='89' c='20' s='13'/>
+</Attr>
+</Id>
+</Name>
+<Output_Parameters>
+<Id value='status' typref='12'>
+<Attr>
+<Pos l='89' c='9' s='6'/>
+</Attr>
+</Id>
+</Output_Parameters>
+</Operation_Call>
+</Body>
+</Operation>
+<Operation name='getVisitedRoutes'>
+<Attr>
+<Pos l='92' c='1' s='6' endLine='95'/>
+</Attr>
+<Output_Parameters>
+<Id value='routes' typref='13'>
+<Attr>
+<Pos l='92' c='1' s='6'/>
+</Attr>
+</Id>
+</Output_Parameters>
+<Body>
+<Operation_Call>
+<Attr>
+<Pos l='94' c='16' s='3'/>
+</Attr>
+<Name>
+<Id value='Mission_Routs'>
+<Attr>
+<Pos l='94' c='20' s='13'/>
+</Attr>
+</Id>
+</Name>
+<Output_Parameters>
+<Id value='routes' typref='13'>
+<Attr>
+<Pos l='94' c='9' s='6'/>
+</Attr>
+</Id>
+</Output_Parameters>
+</Operation_Call>
+</Body>
+</Operation>
+</Operations>
+<TypeInfos>
+<Type id='0'>
+<Id value='BOOL'/>
+</Type>
+<Type id='1'>
+<Id value='INTEGER'/>
+</Type>
+<Type id='2'>
+<Unary_Exp op='POW'>
+<Id value='INTEGER'/>
+</Unary_Exp>
+</Type>
+<Type id='3'>
+<Unary_Exp op='POW'>
+<Unary_Exp op='POW'>
+<Id value='INTEGER'/>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='4'>
+<Unary_Exp op='POW'>
+<Id value='DRECTIONS'/>
+</Unary_Exp>
+</Type>
+<Type id='5'>
+<Id value='DRECTIONS'/>
+</Type>
+<Type id='6'>
+<Id value='GAME_STATUS'/>
+</Type>
+<Type id='7'>
+<Unary_Exp op='POW'>
+<Id value='GAME_STATUS'/>
+</Unary_Exp>
+</Type>
+<Type id='8'>
+<Id value='REPORT'/>
+</Type>
+<Type id='9'>
+<Unary_Exp op='POW'>
+<Id value='REPORT'/>
+</Unary_Exp>
+</Type>
+<Type id='10'>
+<Binary_Exp op='*'>
+<Id value='INTEGER'/>
+<Id value='INTEGER'/>
+</Binary_Exp>
+</Type>
+<Type id='11'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='INTEGER'/>
+<Id value='INTEGER'/>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='12'>
+<Binary_Exp op='*'>
+<Binary_Exp op='*'>
+<Binary_Exp op='*'>
+<Binary_Exp op='*'>
+<Id value='Lables'/>
+<Id value='GAME_STATUS'/>
+</Binary_Exp>
+<Binary_Exp op='*'>
+<Id value='Lables'/>
+<Binary_Exp op='*'>
+<Id value='INTEGER'/>
+<Id value='INTEGER'/>
+</Binary_Exp>
+</Binary_Exp>
+</Binary_Exp>
+<Binary_Exp op='*'>
+<Id value='Lables'/>
+<Id value='INTEGER'/>
+</Binary_Exp>
+</Binary_Exp>
+<Binary_Exp op='*'>
+<Id value='Lables'/>
+<Id value='INTEGER'/>
+</Binary_Exp>
+</Binary_Exp>
+</Type>
+<Type id='13'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='INTEGER'/>
+<Binary_Exp op='*'>
+<Id value='INTEGER'/>
+<Id value='INTEGER'/>
+</Binary_Exp>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+</TypeInfos>
+
+</Machine>
